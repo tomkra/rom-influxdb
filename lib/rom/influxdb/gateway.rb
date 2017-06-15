@@ -23,6 +23,7 @@ module ROM
       #
       # @api public
       def initialize(uri, options = {})
+        @options = options
         @connection = connect(uri, options)
         @datasets = {}
       end

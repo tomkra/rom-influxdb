@@ -3,7 +3,11 @@ module ROM
     class Relation < ROM::Relation
       adapter :influxdb
 
-      forward :query, :where, :insert
+      forward :query, :where, :insert, :<<
+
+      def count
+        dataset.count
+      end
     end
   end
 end
