@@ -1,3 +1,5 @@
+require 'equalizer'
+
 module ROM
   module InfluxDB
     class Dataset
