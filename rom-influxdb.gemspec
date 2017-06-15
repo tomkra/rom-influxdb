@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "influxdb"
   spec.add_runtime_dependency "rom", '~> 3.2', '>= 3.2.3'
+  spec.add_runtime_dependency "equalizer"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
