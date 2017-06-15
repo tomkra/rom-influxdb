@@ -5,7 +5,7 @@ require 'rom/influxdb/commands'
 module ROM
   module InfluxDB
     class Gateway < ROM::Gateway
-      attr_reader :sets
+      attr_reader :datasets
 
       # InfluxDB gateway interface
       #
@@ -22,7 +22,7 @@ module ROM
       # @api public
       def initialize(uri, options = {})
         @connection = connect(uri, options)
-        @sets = {}
+        @datasets = {}
       end
 
       # Return dataset with the given name
@@ -33,7 +33,7 @@ module ROM
       #
       # @api public
       def dataset(name)
-        sets[name] = Dataset.new(name, connection)
+        datasets[name] = Dataset.new(name, connection)
       end
 
       # Return dataset with the given name
@@ -44,7 +44,7 @@ module ROM
       #
       # @api public
       def [](name)
-        sets.fetch(name)
+        datasets.fetch(name)
       end
 
       # Check if dataset exists
@@ -53,8 +53,7 @@ module ROM
       #
       # @api public
       def dataset?(name)
-        connection.query("select * from #{name} limit 1")
-        true
+        exists_dataset?
       rescue ::InfluxDB::Error
         false
       end
@@ -77,6 +76,10 @@ module ROM
         dbname = uri.path[1..-1]
         params = { host: host, port: port }.merge(options)
         ::InfluxDB::Client.new(dbname, params)
+      end
+
+      def exists_dataset?
+        connection.query("SELECT * FROM #{name} LIMIT 1")
       end
     end
   end

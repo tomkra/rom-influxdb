@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "influxdb"
-  spec.add_runtime_dependency "rom", "~> 0.8", ">= 0.8.0"
+  spec.add_runtime_dependency "rom", '~> 3.2', '>= 3.2.3'
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
