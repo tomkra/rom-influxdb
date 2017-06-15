@@ -1,7 +1,7 @@
 module ROM
   module InfluxDB
     class Dataset
-      include Equalizer.new(:name, :connection)
+      include ::Equalizer.new(:name, :connection)
 
       attr_reader :name, :connection
 
