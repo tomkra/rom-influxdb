@@ -4,6 +4,8 @@ module ROM
   module InfluxDB
     module Commands
       class Create < ROM::Commands::Create
+        adapter :influxdb
+        
         def collection
           relation.dataset
         end

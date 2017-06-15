@@ -5,6 +5,8 @@ require 'rom/influxdb/commands'
 module ROM
   module InfluxDB
     class Gateway < ROM::Gateway
+      adapter :influxdb
+
       attr_reader :datasets
 
       # InfluxDB gateway interface
