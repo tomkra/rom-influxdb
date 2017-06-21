@@ -36,6 +36,12 @@ module ROM
         distribute
       end
 
+      def limit(limit)
+        @data = connection.query("SELECT * FROM #{name} ORDER BY time DESC LIMIT #{limit}")
+
+        distribute
+      end
+
       def count
         result = query('COUNT(*)').first
 
